@@ -1,15 +1,12 @@
-
 # This is a basic workflow to help you get started with Actions
 
-name: Continous Integration
+name: Continous Integration Demo
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [ main, feature/branch ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -30,8 +27,30 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
+      - name: running a custom scrip
+        run: |
+           ls -al
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: check java version
+        run: java -version
+      - name: gradle build
+        run: gradle build
+      - name: gradlew build
+        run: ./gradlew build
+      - name: docker version
+        run: |
+          docker -v
+          docker
+          docker images -a
+      - name: docker build
+        run: |
+          docker build . -t 9425424282/demo-kotlintest
+          docker images -a
+      - name: docker login
+        run: docker login -u ${{ secrets.dockerhubusername }} -p ${{ secrets.dockerhubpassword }}
+      - name: docker image push
+        run: docker push 9425424282/demo-kotlintest
