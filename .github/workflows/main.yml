@@ -37,20 +37,23 @@ jobs:
           echo test, and deploy your project.
       - name: check java version
         run: java -version
-      - name: gradle build
-        run: gradle build
+
       - name: gradlew build
         run: ./gradlew build
+      
       - name: docker version
         run: |
           docker -v
           docker
           docker images -a
+      
       - name: docker build
         run: |
           docker build . -t 9425424282/demo-kotlintest
           docker images -a
+      
       - name: docker login
         run: docker login -u ${{ secrets.dockerhubusername }} -p ${{ secrets.dockerhubpassword }}
+      
       - name: docker image push
         run: docker push 9425424282/demo-kotlintest
