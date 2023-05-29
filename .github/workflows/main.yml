@@ -43,11 +43,10 @@ jobs:
           allow-no-subscriptions: true
 
       - name: Run Azure commands
+          allow-no-subscriptions: true
         run: |
           az account show
           az group list
-        with:  
-          allow-no-subscriptions: true
 
       - name: check java version
         run: java -version
