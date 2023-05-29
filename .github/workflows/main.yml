@@ -42,12 +42,6 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           allow-no-subscriptions: true
 
-      - name: Run Azure commands
-          allow-no-subscriptions: true
-        run: |
-          az account show
-          az group list
-
       - name: check java version
         run: java -version
 
