@@ -46,7 +46,8 @@ jobs:
         run: |
           az account show
           az group list
-        allow-no-subscriptions: true
+        with:  
+          allow-no-subscriptions: true
 
       - name: check java version
         run: java -version
